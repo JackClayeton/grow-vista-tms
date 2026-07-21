@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Grow Vista — TMS</title>
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ================= LOGIN ================= -->
+  <div id="loginView" class="login-wrap">
+    <div class="login-bg-orb orb1"></div>
+    <div class="login-bg-orb orb2"></div>
+    <div class="login-bg-orb orb3"></div>
+
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="assets/logo.png" alt="The Grow Vista" class="login-logo" />
+      </div>
+      <h1 class="login-title">Welcome back</h1>
+      <p class="login-sub">Sign in to your Grow Vista workspace</p>
+
+      <form id="loginForm" class="login-form" autocomplete="off">
+        <label class="field">
+          <span>Username</span>
+          <input type="text" id="loginUser" placeholder="e.g. admin" required />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <div class="pw-wrap">
+            <input type="password" id="loginPass" placeholder="••••••••" required />
+            <button type="button" class="pw-toggle" data-target="loginPass" aria-label="Show password">👁</button>
+          </div>
+        </label>
+        <div id="loginError" class="form-error" hidden></div>
+        <button type="submit" class="btn btn-primary btn-block">Sign in &amp; Clock in</button>
+      </form>
+
+      <div class="login-hint" id="loginHint"></div>
+    </div>
+
+    <footer class="login-footer">Created by <strong>Ahmad Tech Lead</strong></footer>
+  </div>
+
+  <!-- ================= APP ================= -->
+  <div id="appView" class="app-shell" hidden>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <img src="assets/logo.png" alt="Grow Vista" />
+        <div>
+          <strong>The Grow Vista</strong>
+          <span>Team Management</span>
+        </div>
+      </div>
+
+      <nav class="nav" id="mainNav">
+        <button class="nav-item active" data-view="dashboard"><i>▦</i><span>Dashboard</span></button>
+        <button class="nav-item" data-view="attendance"><i>◷</i><span>Attendance</span></button>
+        <button class="nav-item" data-view="tasks"><i>✓</i><span>Tasks</span></button>
+        <button class="nav-item" data-view="leave"><i>✈</i><span>Leave</span></button>
+        <button class="nav-item admin-only" data-view="users"><i>⚇</i><span>Users</span></button>
+        <button class="nav-item" data-view="profile"><i>◍</i><span>My Profile</span></button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="mini-credit">Created by <strong>Ahmad Tech Lead</strong></div>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Main -->
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+        <div class="topbar-title" id="viewTitle">Dashboard</div>
+        <div class="topbar-right">
+          <div class="clock-pill">
+            <span id="liveClock">--:--:--</span>
+          </div>
+          <div class="status-pill" id="shiftStatus"><span class="dot"></span><span id="shiftStatusText">Off shift</span></div>
+          <div class="user-chip" id="userChip">
+            <div class="avatar" id="userAvatar">?</div>
+            <div class="user-chip-info">
+              <strong id="userChipName">User</strong>
+              <span id="userChipRole">Member</span>
+            </div>
+          </div>
+          <button class="btn btn-ghost btn-sm" id="logoutBtn">Clock out &amp; Log out</button>
+        </div>
+      </header>
+
+      <main class="content" id="content"><!-- views injected here --></main>
+
+      <footer class="app-footer">Created by <strong>Ahmad Tech Lead</strong> · The Grow Vista © <span id="yearNow"></span></footer>
+    </div>
+  </div>
+
+  <!-- ================= MODAL ================= -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" id="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <h3 id="modalTitle">Title</h3>
+        <button class="icon-btn" id="modalClose" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ================= TOASTS ================= -->
+  <div class="toast-stack" id="toastStack"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
